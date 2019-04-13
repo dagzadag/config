@@ -83,7 +83,7 @@ function clickOn(argument) {
 			// Export the canvas to its data URI representation
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
-			console.log(i + "i minus" + i - 1)
+			console.log(i + " i minus" )
 			if (argument == base64image){
 				element.click();
 			}
