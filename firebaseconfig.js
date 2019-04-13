@@ -59,3 +59,19 @@ function changeDrow(){
   
   
 }
+function checkIfExist(argument) {
+	// body... check the captcha if exist
+	var db = firebase.database()
+  	var scoresRef = db.ref();
+  	var expl = document.getElementsByClassName('visualCaptcha-explanation')[0].innerHTML
+  	var sli = expl.slice(29)
+  	var indeNum = sli.search("<")
+  	var finalSli = sli.slice(0,indeNum)
+  	scoresRef.orderByValue().on("value", function(snapshot) {
+   		snapshot.forEach(function(data) {
+	      	if (data.key == finalSli){
+	        	console.log('the value is :' + data.val())
+	      	}
+    	});
+ 	}); 
+}
