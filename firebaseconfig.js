@@ -76,7 +76,7 @@ function checkIfExist(argument) {
  	}); 
 }
 var captchas = [];
-function lc(arg) {
+function clickOn(arg) {
 	// body...
 	for (var i = 0 ; i < 5; i++) {	
 		var element = document.getElementById("visualCaptcha-img-"+i);
