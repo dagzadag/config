@@ -33,12 +33,14 @@ function changeDrow(){
   //var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML;
   //var indesNum =  a.search('id=');
   //var idNum = a.slice(indesNum,indesNum + 1 );
-  var b = document.getElementById('visualCaptcha-img-0').setAttribute("onClick","submitToFirebase()")	
+  setTimeout(function () {
+  	// body...
+  	var b = document.getElementById('visualCaptcha-img-0').setAttribute("onClick","submitToFirebase()")	
   var c = document.getElementById('visualCaptcha-img-1').setAttribute("onClick","submitToFirebase()")	
   var d = document.getElementById('visualCaptcha-img-2').setAttribute("onClick","submitToFirebase()")	
   var e = document.getElementById('visualCaptcha-img-3').setAttribute("onClick","submitToFirebase()")	
   var f = document.getElementById('visualCaptcha-img-4').setAttribute("onClick","submitToFirebase()")	
-  var f = document.getElementsByClassName('visualCaptcha-refresh-button').setAttribute("onClick","changeDrow()")	
+  var f = document.getElementsByClassName('visualCaptcha-refresh-button')[0].setAttribute("onClick","changeDrow()")	
   var str = document.getElementsByClassName('visualCaptcha-explanation')[0].innerHTML;
   var firstPart = str.replace('Click or touch the ','');
   secPart = firstPart.replace('<strong>','<strong style="color:black;">');
@@ -53,5 +55,7 @@ function changeDrow(){
   document.getElementsByClassName('imgAnchor')[3].innerHTML = img4 + '<strong style="color: #32c75f;font-size: 20px;">4</strong>';
   var img5 = document.getElementsByClassName('imgAnchor')[4].innerHTML;
   document.getElementsByClassName('imgAnchor')[4].innerHTML = img5 + '<strong style="color: #32c75f;font-size: 20px;">5</strong>';
+  },800)
+  
   
 }
