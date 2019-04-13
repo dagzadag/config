@@ -77,16 +77,20 @@ function checkIfExist(argument) {
 }
 function clickOn(argument) {
 	// body...
+	var captchas = [];
 	for (var i = 0 ; i < 5; i++) {
+		
 		var element = document.getElementById("visualCaptcha-img-"+i);
 		html2canvas(element).then(function(canvas) {
 			// Export the canvas to its data URI representation
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
-			console.log(i + " i minus" )
-			if (argument == base64image){
-				element.click();
-			}
+			captchas.push(base64image)
 		});
 	}
+	captchas.forEach(function (ele) {
+		if (ele == argument){
+			element.click()
+		}
+	})
 }
