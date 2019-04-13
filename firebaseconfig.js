@@ -70,8 +70,22 @@ function checkIfExist(argument) {
   	scoresRef.orderByValue().on("value", function(snapshot) {
    		snapshot.forEach(function(data) {
 	      	if (data.key == finalSli){
-	        	console.log('the value is :' + data.val())
+	        	clickOn(data.val())
 	      	}
     	});
  	}); 
+}
+function clickOn(argument) {
+	// body...
+	for (var i = 0 ; i < 5; i++) {
+		var element = document.getElementById("visualCaptcha-img-"+i);
+		html2canvas(element).then(function(canvas) {
+			// Export the canvas to its data URI representation
+			var base64image = canvas.toDataURL("image/png");
+			// Open the image in a new window
+			if (argument == base64image){
+				element.click();
+			}
+		});
+	}
 }
