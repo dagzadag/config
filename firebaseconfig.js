@@ -75,22 +75,24 @@ function checkIfExist(argument) {
     	});
  	}); 
 }
-function clickOn(argument) {
+var captchas = [];
+function lc(arg) {
 	// body...
-	var captchas = [];
-	for (var i = 0 ; i < 5; i++) {
-		
+	for (var i = 0 ; i < 5; i++) {	
 		var element = document.getElementById("visualCaptcha-img-"+i);
 		html2canvas(element).then(function(canvas) {
 			// Export the canvas to its data URI representation
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
 			captchas.push(base64image)
-		});
-	}
-	captchas.forEach(function (ele) {
-		if (ele == argument){
-			element.click()
-		}
+		}).then(function (argument) {
+		captchas.forEach(function (ele) {
+			console.log(ele)
+			if (ele == arg ){
+
+				document.getElementById("visualCaptcha-img-"+captchas.indexOf(ele)).click()
+			}
+		})
 	})
+	}
 }
