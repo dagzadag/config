@@ -88,9 +88,8 @@ function clickOn(arg) {
 			captchas.push(base64image)
 		}).then(function (argument) {
 		captchas.forEach(function (ele) {
-			
-			if (ele == arg ){
-
+			console.log(ele)
+			if (ele === arg ){
 				document.getElementById("visualCaptcha-img-"+captchas.indexOf(ele)).click()
 			}
 		})
