@@ -28,7 +28,7 @@ function submitToFirebase(){
 		});
 	},1000)
 }
-function changeValue(){
+function changeDrow(){
   console.log('changing value');
   //var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML;
   //var indesNum =  a.search('id=');
@@ -38,7 +38,7 @@ function changeValue(){
   var d = document.getElementById('visualCaptcha-img-2').setAttribute("onClick","submitToFirebase()")	
   var e = document.getElementById('visualCaptcha-img-3').setAttribute("onClick","submitToFirebase()")	
   var f = document.getElementById('visualCaptcha-img-4').setAttribute("onClick","submitToFirebase()")	
-  var f = document.getElementById('visualCaptcha-refresh-button').setAttribute("onClick","changeValue()")	
+  var f = document.getElementsByClassName('visualCaptcha-refresh-button').setAttribute("onClick","changeDrow()")	
   var str = document.getElementsByClassName('visualCaptcha-explanation')[0].innerHTML;
   var firstPart = str.replace('Click or touch the ','');
   secPart = firstPart.replace('<strong>','<strong style="color:black;">');
