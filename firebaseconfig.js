@@ -78,6 +78,7 @@ function checkIfExist(argument) {
 var captchas = [];
 function clickOn(arg) {
 	// body...
+	var captchas = [];
 	for (var i = 0 ; i < 5; i++) {	
 		var element = document.getElementById("visualCaptcha-img-"+i);
 		html2canvas(element).then(function(canvas) {
