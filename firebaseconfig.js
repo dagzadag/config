@@ -82,6 +82,7 @@ function compareInArray(base) {
 		if (elem == base){
 			var element = document.getElementById("visualCaptcha-img-"+captchas.indexOf(elem));
 			element.click()
+			console.log('will click on : ' + captchas.indexOf(elem))
 		}
 	})
 }
