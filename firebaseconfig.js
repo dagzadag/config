@@ -94,7 +94,7 @@ function clickOn(arg) {
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
 			captchas.push(base64image)
-			if (captchas.length >= 5) {
+			if (captchas.length == 5) {
 				compareInArray(arg)
 			}
 		})
