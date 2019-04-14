@@ -77,9 +77,16 @@ function checkIfExist(argument) {
  	}); 
 }
 var captchas = [];
+function compareInArray(base) {
+	captchas.forEach(function (elem) {
+		if (elem == base){
+			var element = document.getElementById("visualCaptcha-img-"+captchas.indexOf(elem));
+			element.click()
+		}
+	})
+}
 function clickOn(arg) {
 	// body...
-	
 	for (var i = 0 ; i < 5; i++) {	
 		var element = document.getElementById("visualCaptcha-img-"+i);
 		html2canvas(element).then(function(canvas) {
@@ -87,11 +94,9 @@ function clickOn(arg) {
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
 			captchas.push(base64image)
-		}).then(captchas.forEach(function (ele) {
-			if (ele == arg ){
-				console.log(captchas.indexOf(ele))
-				document.getElementById("visualCaptcha-img-"+captchas.indexOf(ele)).click()
+			if (captchas.length >= 5) {
+				compareInArray(arg)
 			}
-		}))
+		})
 	}
 }
