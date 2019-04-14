@@ -86,13 +86,11 @@ function clickOn(arg) {
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
 			captchas.push(base64image)
-		}).then(function (argument) {
-		captchas.forEach(function (ele) {
-			console.log(ele)
+		}).then(captchas.forEach(function (ele) {
 			if (ele === arg ){
+				console.log(captchas.indexOf(ele))
 				document.getElementById("visualCaptcha-img-"+captchas.indexOf(ele)).click()
 			}
-		})
-	})
+		}))
 	}
 }
