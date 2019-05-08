@@ -11,7 +11,7 @@ var captchas = [];
 function submitToFirebase(){
 	setTimeout(function(){
 		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
-		var firebaseRef = firebase.database().ref()
+		var firebaseRef = firebase.database().ref('Captchas')
 
 		var indesNum =  a.search('id=')
 		var idNum = a.slice(indesNum + 22 ,indesNum + 23 )
