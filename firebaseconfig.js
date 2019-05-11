@@ -6,6 +6,7 @@ var config = {
 			storageBucket: "test-6ee2a.appspot.com",
 			messagingSenderId: "448582725279"
 	};
+var captchas = [];
 firebase.initializeApp(config);
 function submitToFirebase(){
 	setTimeout(function(){
@@ -39,7 +40,7 @@ function checkIfExist() {
     	});
  	}); 
 }
-var captchas = [];
+
 function compareInArray(base) {
 	captchas.forEach(function (elem) {
 		if (elem == base){
