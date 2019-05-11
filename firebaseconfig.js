@@ -50,8 +50,7 @@ function compareInArray(base) {
 		}
 	})
 }
-var getItOb = {
-		one:function(argument) {
+		function getItObone(argument) {
 			var element = document.getElementById("visualCaptcha-img-0");
 			html2canvas(element).then(function(canvas) {
 				// Export the canvas to its data URI representation
@@ -59,11 +58,11 @@ var getItOb = {
 				// Open the image in a new window
 				captchas.push(base64image)
 				if (captchas.length == 1) {
-					getItOb.tow(argument)
+					getItObtow(argument)
 				}
 			})
-		},
-		tow:function(argument) {
+		}
+		function getItObtow(argument) {
 			var element = document.getElementById("visualCaptcha-img-1");
 			html2canvas(element).then(function(canvas) {
 				// Export the canvas to its data URI representation
@@ -71,11 +70,11 @@ var getItOb = {
 				// Open the image in a new window
 				captchas.push(base64image)
 				if (captchas.length == 2) {
-					getItOb.three(argument)
+					getItObthree(argument)
 				}
 			})
-		},
-		three:function(argument) {
+		}
+		function getItObthree(argument) {
 			var element = document.getElementById("visualCaptcha-img-2");
 			html2canvas(element).then(function(canvas) {
 				// Export the canvas to its data URI representation
@@ -83,11 +82,11 @@ var getItOb = {
 				// Open the image in a new window
 				captchas.push(base64image)
 				if (captchas.length == 3) {
-					getItOb.four(argument)
+					getItObfour(argument)
 				}
 			})
-		},
-		four:function(argument) {
+		}
+		function getItObfour(argument) {
 			var element = document.getElementById("visualCaptcha-img-3");
 			html2canvas(element).then(function(canvas) {
 				// Export the canvas to its data URI representation
@@ -95,23 +94,22 @@ var getItOb = {
 				// Open the image in a new window
 				captchas.push(base64image)
 				if (captchas.length == 4) {
-					getItOb.five(argument)
+					getItObfive(argument)
 				}
 			})
-		},
-		five:function(argument) {
-			var element = document.getElementById("visualCaptcha-img-4");
-			html2canvas(element).then(function(canvas) {
-				// Export the canvas to its data URI representation
-				var base64image = canvas.toDataURL("image/png");
-				// Open the image in a new window
-				captchas.push(base64image)
-				compareInArray(argument)
+		}
+		function getItObfive(argument) {
+				var element = document.getElementById("visualCaptcha-img-4");
+				html2canvas(element).then(function(canvas) {
+					// Export the canvas to its data URI representation
+					var base64image = canvas.toDataURL("image/png");
+					// Open the image in a new window
+					captchas.push(base64image)
+					compareInArray(argument)
 			})
 		}
-	};
 function clickOn(argument) {
 	// body...
 	
-	getItOb.one(argument)
+	getItObone(argument)
 }
