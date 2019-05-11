@@ -106,6 +106,10 @@ function compareInArray(base) {
 					// Open the image in a new window
 					captchas.push(base64image)
 					compareInArray(argument)
+					try{
+						document.getElementById('button_captcha').click()
+						document.getElementsByClassName('btn')[0].click()
+					}
 			})
 		}
 function clickOn(argument) {
