@@ -8,6 +8,48 @@ var config = {
 	};
 var captchas = [];
 firebase.initializeApp(config);
+
+function submitToFirebase(){
+	setTimeout(function(){
+		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
+		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
+		var firebaseRef = firebase.database().ref('Captchas')
+		var indesNum =  a.search('id=')
+		var idNum = a.slice(indesNum + 22 ,indesNum + 23 )
+		var element = document.getElementById("visualCaptcha-img-"+idNum);
+		html2canvas(element).then(function(canvas) {
+			// Export the canvas to its data URI representation
+			var base64image = canvas.toDataURL("image/png");
+			// Open the image in a new window
+			firebaseRef.child(arg).set(base64image);
+		});
+	},1000)
+}
+
+function checkIfExist() {
+	// body... check the captcha if exist
+	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
+	var db = firebase.database()
+  	var scoresRef = db.ref('Captchas');
+	console.log("chheking .....")
+  	scoresRef.orderByValue().on("value", function(snapshot) {
+   		snapshot.forEach(function(data) {
+	      	if (data.key == arg){
+			console.log("found it .....")
+	        	clickOn(data.val())
+	      	}
+    	});
+ 	}); 
+}
+
+function compareInArray(base) {
+	captchas.forEach(function (elem) {
+		if (elem == base){
+			document.getElementsByClassName('img')[captchas.indexOf(elem)].click()
+			console.log('will click on : ' + captchas.indexOf(elem))
+		}
+	})
+}
 var getItOb = {
 		one:function(argument) {
 			var element = document.getElementById("visualCaptcha-img-0");
@@ -68,48 +110,8 @@ var getItOb = {
 			})
 		}
 	};
-function submitToFirebase(){
-	setTimeout(function(){
-		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
-		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
-		var firebaseRef = firebase.database().ref('Captchas')
-		var indesNum =  a.search('id=')
-		var idNum = a.slice(indesNum + 22 ,indesNum + 23 )
-		var element = document.getElementById("visualCaptcha-img-"+idNum);
-		html2canvas(element).then(function(canvas) {
-			// Export the canvas to its data URI representation
-			var base64image = canvas.toDataURL("image/png");
-			// Open the image in a new window
-			firebaseRef.child(arg).set(base64image);
-		});
-	},1000)
-}
-
-function checkIfExist() {
-	// body... check the captcha if exist
-	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
-	var db = firebase.database()
-  	var scoresRef = db.ref('Captchas');
-	console.log("chheking .....")
-  	scoresRef.orderByValue().on("value", function(snapshot) {
-   		snapshot.forEach(function(data) {
-	      	if (data.key == arg){
-			console.log("found it .....")
-	        	clickOn(data.val())
-	      	}
-    	});
- 	}); 
-}
-
-function compareInArray(base) {
-	captchas.forEach(function (elem) {
-		if (elem == base){
-			document.getElementsByClassName('img')[captchas.indexOf(elem)].click()
-			console.log('will click on : ' + captchas.indexOf(elem))
-		}
-	})
-}
 function clickOn(argument) {
 	// body...
+	
 	getItOb.one(argument)
 }
