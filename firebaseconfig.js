@@ -8,6 +8,66 @@ var config = {
 	};
 var captchas = [];
 firebase.initializeApp(config);
+var getItOb = {
+		one:function(argument) {
+			var element = document.getElementById("visualCaptcha-img-0");
+			html2canvas(element).then(function(canvas) {
+				// Export the canvas to its data URI representation
+				var base64image = canvas.toDataURL("image/png");
+				// Open the image in a new window
+				captchas.push(base64image)
+				if (captchas.length == 1) {
+					getItOb.tow(argument)
+				}
+			})
+		},
+		tow:function(argument) {
+			var element = document.getElementById("visualCaptcha-img-1");
+			html2canvas(element).then(function(canvas) {
+				// Export the canvas to its data URI representation
+				var base64image = canvas.toDataURL("image/png");
+				// Open the image in a new window
+				captchas.push(base64image)
+				if (captchas.length == 2) {
+					getItOb.three(argument)
+				}
+			})
+		},
+		three:function(argument) {
+			var element = document.getElementById("visualCaptcha-img-2");
+			html2canvas(element).then(function(canvas) {
+				// Export the canvas to its data URI representation
+				var base64image = canvas.toDataURL("image/png");
+				// Open the image in a new window
+				captchas.push(base64image)
+				if (captchas.length == 3) {
+					getItOb.four(argument)
+				}
+			})
+		},
+		four:function(argument) {
+			var element = document.getElementById("visualCaptcha-img-3");
+			html2canvas(element).then(function(canvas) {
+				// Export the canvas to its data URI representation
+				var base64image = canvas.toDataURL("image/png");
+				// Open the image in a new window
+				captchas.push(base64image)
+				if (captchas.length == 4) {
+					getItOb.five(argument)
+				}
+			})
+		},
+		five:function(argument) {
+			var element = document.getElementById("visualCaptcha-img-4");
+			html2canvas(element).then(function(canvas) {
+				// Export the canvas to its data URI representation
+				var base64image = canvas.toDataURL("image/png");
+				// Open the image in a new window
+				captchas.push(base64image)
+				compareInArray(argument)
+			})
+		}
+	};
 function submitToFirebase(){
 	setTimeout(function(){
 		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
@@ -49,23 +109,7 @@ function compareInArray(base) {
 		}
 	})
 }
-function clickOn(arg) {
+function clickOn(argument) {
 	// body...
-	for (var i = 0 ; i < 5; i++) {	
-		var element = document.getElementById("visualCaptcha-img-"+i);
-		html2canvas(element).then(function(canvas) {
-			// Export the canvas to its data URI representation
-			var base64image = canvas.toDataURL("image/png");
-			// Open the image in a new window
-			if (captchas.length < 5){
-				captchas.push(base64image)
-			} 
-			if (captchas.length == 5) {
-				compareInArray(arg)
-			}
-		})
-		setTimeout(function (argument) {
-				console.log('lag laga laga')
-		},600)
-	}
+	getItOb.one(argument)
 }
