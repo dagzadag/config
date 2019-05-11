@@ -51,18 +51,20 @@ function compareInArray(base) {
 }
 function clickOn(arg) {
 	// body...
-	for (var i = 0 ; i < 5; i++) {	
-		var element = document.getElementById("visualCaptcha-img-"+i);
-		html2canvas(element).then(function(canvas) {
-			// Export the canvas to its data URI representation
-			var base64image = canvas.toDataURL("image/png");
-			// Open the image in a new window
-			if (captchas.length < 5){
+	var element = document.getElementById("visualCaptcha-img-"+(captchas.length - 1));
+	html2canvas(element).then(function(canvas) {
+		// Export the canvas to its data URI representation
+		var base64image = canvas.toDataURL("image/png");
+		// Open the image in a new window
+		if (captchas.length < 5){
+			setTimeout(function (argument) {
 				captchas.push(base64image)
-			} 
-			if (captchas.length == 5) {
-				compareInArray(arg)
-			}
-		})
-	}
+				clickOn(arg)
+			},100)
+		} 
+		if (captchas.length == 5) {
+			compareInArray(arg)
+		}
+	})
+
 }
