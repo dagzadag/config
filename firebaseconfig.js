@@ -108,8 +108,12 @@ function compareInArray(base) {
 					compareInArray(argument)
 					try{
 						document.getElementById('button_captcha').click()
+					}
+					catch(err){console.log("err")}
+					try{
 						document.getElementsByClassName('btn')[0].click()
 					}
+					catch(err){console.log("err")}
 			})
 		}
 function clickOn(argument) {
