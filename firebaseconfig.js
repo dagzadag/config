@@ -7,8 +7,9 @@ var config = {
 			messagingSenderId: "448582725279"
 	};
 firebase.initializeApp(config);
-function submitToFirebase(arg){
+function submitToFirebase(){
 	setTimeout(function(){
+		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
 		var firebaseRef = firebase.database().ref('Captchas')
 		var indesNum =  a.search('id=')
@@ -23,14 +24,15 @@ function submitToFirebase(arg){
 	},1000)
 }
 
-function checkIfExist(argument) {
+function checkIfExist() {
 	// body... check the captcha if exist
+	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 	var db = firebase.database()
   	var scoresRef = db.ref('Captchas');
 	console.log("chheking .....")
   	scoresRef.orderByValue().on("value", function(snapshot) {
    		snapshot.forEach(function(data) {
-	      	if (data.key == argument){
+	      	if (data.key == arg){
 			console.log("found it .....")
 	        	clickOn(data.val())
 	      	}
