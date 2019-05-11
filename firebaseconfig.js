@@ -107,7 +107,7 @@ function compareInArray(base) {
 					captchas.push(base64image)
 					compareInArray(argument)
 					try{
-						document.getElementById('button_captcha').click()
+						document.getElementById('captcha_button').click()
 					}
 					catch(err){console.log("err")}
 					try{
