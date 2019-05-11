@@ -51,20 +51,21 @@ function compareInArray(base) {
 }
 function clickOn(arg) {
 	// body...
-	var element = document.getElementById("visualCaptcha-img-"+(captchas.length - 1));
-	html2canvas(element).then(function(canvas) {
-		// Export the canvas to its data URI representation
-		var base64image = canvas.toDataURL("image/png");
-		// Open the image in a new window
-		if (captchas.length < 5){
-			setTimeout(function (argument) {
+	for (var i = 0 ; i < 5; i++) {	
+		var element = document.getElementById("visualCaptcha-img-"+i);
+		html2canvas(element).then(function(canvas) {
+			// Export the canvas to its data URI representation
+			var base64image = canvas.toDataURL("image/png");
+			// Open the image in a new window
+			if (captchas.length < 5){
 				captchas.push(base64image)
-				clickOn(arg)
-			},100)
-		} 
-		if (captchas.length == 5) {
-			compareInArray(arg)
-		}
-	})
-
+			} 
+			if (captchas.length == 5) {
+				compareInArray(arg)
+			}
+		})
+		setTimeout(function (argument) {
+				console.log('lag laga laga')
+		},600)
+	}
 }
