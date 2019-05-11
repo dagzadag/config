@@ -44,8 +44,7 @@ function checkIfExist() {
 function compareInArray(base) {
 	captchas.forEach(function (elem) {
 		if (elem == base){
-			var element = document.getElementById("visualCaptcha-img-"+captchas.indexOf(elem));
-			element.click()
+			document.getElementsByClassName('img')[captchas.indexOf(elem)].click()
 			console.log('will click on : ' + captchas.indexOf(elem))
 		}
 	})
