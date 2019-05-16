@@ -119,6 +119,11 @@ function waitAndClick(){
   try{
     document.getElementById('captcha_button').click()
   }
+	
+  catch(err){console.log("err")}
+	try{
+    document.getElementsByClassName('btn')[0].click()
+  }
   catch(err){console.log("err")}
   setTimeout(function () {
     // body...
