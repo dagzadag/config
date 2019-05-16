@@ -99,25 +99,29 @@ function compareInArray(base) {
 			})
 		}
 		function getItObfive(argument) {
-				var element = document.getElementById("visualCaptcha-img-4");
-				html2canvas(element).then(function(canvas) {
-					// Export the canvas to its data URI representation
-					var base64image = canvas.toDataURL("image/png");
-					// Open the image in a new window
-					captchas.push(base64image)
-					compareInArray(argument)
-					try{
-						document.getElementById('captcha_button').click()
-					}
-					catch(err){console.log("err")}
-					try{
-						document.getElementsByClassName('btn')[0].click()
-					}
-					catch(err){console.log("err")}
-			})
-		}
+        var element = document.getElementById("visualCaptcha-img-4");
+        html2canvas(element).then(function(canvas) {
+          // Export the canvas to its data URI representation
+          var base64image = canvas.toDataURL("image/png");
+          // Open the image in a new window
+          captchas.push(base64image)
+          compareInArray(argument)
+          waitAndClick()
+      })
+    }
 function clickOn(argument) {
-	// body...
-	
-	getItObone(argument)
+  // body...
+  
+  getItObone(argument)
+}
+function waitAndClick(){
+  console.log("Wating time is : " + issue.waiting)
+  try{
+    document.getElementById('captcha_button').click()
+  }
+  catch(err){console.log("err")}
+  try{
+    document.getElementsByClassName('btn')[0].click()
+  }
+  catch(err){console.log("err")}
 }
