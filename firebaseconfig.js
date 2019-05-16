@@ -120,8 +120,11 @@ function waitAndClick(){
     document.getElementById('captcha_button').click()
   }
   catch(err){console.log("err")}
+  setTimeout(function () {
+    // body...
   try{
-    document.getElementsByClassName('btn')[0].click()
+    document.getElementById('nextAdBtn').click()
   }
   catch(err){console.log("err")}
+  },issue.waiting + 1)
 }
