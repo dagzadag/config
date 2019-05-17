@@ -131,5 +131,5 @@ function waitAndClick(){
     document.getElementById('nextAdBtn').click()
   }
   catch(err){console.log("err")}
-  },issue.waiting + 1)
+  },(issue.waiting + 1) * 1000)
 }
