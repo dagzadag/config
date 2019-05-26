@@ -30,7 +30,7 @@ function checkIfExist() {
 	// body... check the captcha if exist
 	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 	var db = firebase.database()
-  	var scoresRef = db.ref('Captchas');
+  	var scoresRef = db.ref('Captchas/billa');
 	console.log("chheking .....")
   	scoresRef.orderByValue().on("value", function(snapshot) {
    		snapshot.forEach(function(data) {
