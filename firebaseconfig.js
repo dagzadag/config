@@ -13,7 +13,7 @@ function submitToFirebase(){
 	setTimeout(function(){
 		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
-		var firebaseRef = firebase.database().ref('Captchas')
+		var firebaseRef = firebase.database().ref('Captchas/bila')
 		var indesNum =  a.search('id=')
 		var idNum = a.slice(indesNum + 22 ,indesNum + 23 )
 		var element = document.getElementById("visualCaptcha-img-"+idNum);
