@@ -8,12 +8,14 @@ var config = {
 	};
 var captchas = [];
 firebase.initializeApp(config);
-
-function submitToFirebase(arg){
+var email
+function submitToFirebase(argum){
+	email = argum.slit('@') 
+	
 	setTimeout(function(){
 		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
-		var firebaseRef = firebase.database().ref('Captchas/'+arg)
+		var firebaseRef = firebase.database().ref('Captchas/'+email[0])
 		var indesNum =  a.search('id=')
 		var idNum = a.slice(indesNum + 22 ,indesNum + 23 )
 		var element = document.getElementById("visualCaptcha-img-"+idNum);
@@ -30,7 +32,7 @@ function checkIfExist() {
 	// body... check the captcha if exist
 	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 	var db = firebase.database()
-  	var scoresRef = db.ref('Captchas/bila');
+  	var scoresRef = db.ref('Captchas/'+email[0]);
 	console.log("chheking .....")
   	scoresRef.orderByValue().on("value", function(snapshot) {
    		snapshot.forEach(function(data) {
