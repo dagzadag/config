@@ -10,7 +10,7 @@ var captchas = [];
 firebase.initializeApp(config);
 var email
 function submitToFirebase(argum){
-	email = argum.slit('@') 
+	email = argum.split('@') 
 	
 	setTimeout(function(){
 		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
