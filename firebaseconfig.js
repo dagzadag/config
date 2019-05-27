@@ -8,7 +8,7 @@ var config = {
 	};
 var captchas = [];
 firebase.initializeApp(config);
-var email
+var email = []
 function submitToFirebase(argum){
 	email = argum.split('@') 
 	
