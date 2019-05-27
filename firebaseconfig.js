@@ -24,6 +24,7 @@ function submitToFirebase(argum){
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
 			firebaseRef.child(arg).set(base64image);
+			checkIfExist()
 		});
 	},1000)
 }
