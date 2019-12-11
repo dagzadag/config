@@ -139,7 +139,10 @@ function waitAndClick(callback){
 	  	console.log("err")
 	  }
   },(issue.waiting + 3) * 1000)
-  callback()
+  setTimeout(function () {
+  	// body...
+  	 callback()
+  },7000)
 }
 function imacrosRun() {try{var e_m64 = "VkVSU0lPTiUyMEJVSUxEJTNEMTAwMjE0NTAlMEFTRVQlMjAhRVJST1JJR05PUkUlMjBZRVMlMEF3YWl0JTIwc2Vjb25kcyUyMCUzRCUyMDk5JTBBVEFCJTIwT1BFTiUwQSUwQVRBQiUyMFQlM0QxJTBBVEFCJTIwQ0xPU0UlMEFVUkwlMjBHT1RPJTNEaHR0cCUzQSUyRiUyRnd3dy5wYWlkdmVydHMuY29t", n64 = "JTIzQ3VycmVudC5paW0=";if(!/^(?:chrome|https?|file)/.test(location)){alert('iMacros: Open webpage to run a macro.');return;}var macro = {};macro.source = decodeURIComponent(atob(e_m64));macro.name = decodeURIComponent(atob(n64));var evt = document.createEvent("CustomEvent");evt.initCustomEvent("iMacrosRunMacro", true, true, macro);window.dispatchEvent(evt);}catch(e){alert('iMacros Bookmarklet error: '+e.toString());}};
 setTimeout(function (){
