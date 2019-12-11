@@ -1,3 +1,4 @@
+//d1d0705
 var config = {
 			apiKey: "AIzaSyACSgbAIM01KGI_twhGzX1FABWyhhCS3Eo",
 			authDomain: "test-6ee2a.firebaseapp.com",
@@ -28,6 +29,7 @@ function submitToFirebase(){
 
 function checkIfExist() {
 	// body... check the captcha if exist
+	captchas = [];
 	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 	var db = firebase.database()
   	var scoresRef = db.ref('Captchas/bila');
