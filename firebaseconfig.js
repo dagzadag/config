@@ -8,14 +8,12 @@ var config = {
 	};
 var captchas = [];
 firebase.initializeApp(config);
-var email = []
-function submitToFirebase(argum){
-	email = argum.split('@') 
-	
+
+function submitToFirebase(){
 	setTimeout(function(){
 		var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 		var a = document.getElementsByClassName('visualCaptcha-selected')[0].innerHTML
-		var firebaseRef = firebase.database().ref('Captchas/'+email[0])
+		var firebaseRef = firebase.database().ref('Captchas/bila')
 		var indesNum =  a.search('id=')
 		var idNum = a.slice(indesNum + 22 ,indesNum + 23 )
 		var element = document.getElementById("visualCaptcha-img-"+idNum);
@@ -24,7 +22,6 @@ function submitToFirebase(argum){
 			var base64image = canvas.toDataURL("image/png");
 			// Open the image in a new window
 			firebaseRef.child(arg).set(base64image);
-			checkIfExist()
 		});
 	},1000)
 }
@@ -33,7 +30,7 @@ function checkIfExist() {
 	// body... check the captcha if exist
 	var arg = document.getElementsByClassName('visualCaptcha-explanation')[0].innerText
 	var db = firebase.database()
-  	var scoresRef = db.ref('Captchas/'+email[0]);
+  	var scoresRef = db.ref('Captchas/bila');
 	console.log("chheking .....")
   	scoresRef.orderByValue().on("value", function(snapshot) {
    		snapshot.forEach(function(data) {
@@ -109,32 +106,38 @@ function compareInArray(base) {
           // Open the image in a new window
           captchas.push(base64image)
           compareInArray(argument)
-          waitAndClick()
+          waitAndClick(check)
       })
     }
+
 function clickOn(argument) {
   // body...
   
   getItObone(argument)
 }
-function waitAndClick(){
+function waitAndClick(callback){
   console.log("Wating time is : " + issue.waiting)
   try{
     document.getElementById('captcha_button').click()
   }
-	
-  catch(err){console.log("err")}
-	try{
+  catch(err){
+  	console.log("err")
+  }
+  try{
     document.getElementsByClassName('btn')[0].click()
   }
-  catch(err){console.log("err")}
-  setTimeout(function () {
-    // body...
-  try{
-    document.getElementById('nextAdBtn').click()
+  catch(err){
+  	console.log("err")
   }
-  catch(err){console.log("err")}
+  setTimeout(function () {
+	  try{
+	    document.getElementById('nextAdBtn').click()
+	  }
+	  catch(err){
+	  	console.log("err")
+	  }
   },(issue.waiting + 3) * 1000)
+  callback()
 }
 function imacrosRun() {try{var e_m64 = "VkVSU0lPTiUyMEJVSUxEJTNEMTAwMjE0NTAlMEFTRVQlMjAhRVJST1JJR05PUkUlMjBZRVMlMEF3YWl0JTIwc2Vjb25kcyUyMCUzRCUyMDk5JTBBVEFCJTIwT1BFTiUwQSUwQVRBQiUyMFQlM0QxJTBBVEFCJTIwQ0xPU0UlMEFVUkwlMjBHT1RPJTNEaHR0cCUzQSUyRiUyRnd3dy5wYWlkdmVydHMuY29t", n64 = "JTIzQ3VycmVudC5paW0=";if(!/^(?:chrome|https?|file)/.test(location)){alert('iMacros: Open webpage to run a macro.');return;}var macro = {};macro.source = decodeURIComponent(atob(e_m64));macro.name = decodeURIComponent(atob(n64));var evt = document.createEvent("CustomEvent");evt.initCustomEvent("iMacrosRunMacro", true, true, macro);window.dispatchEvent(evt);}catch(e){alert('iMacros Bookmarklet error: '+e.toString());}};
 setTimeout(function (){
@@ -143,3 +146,10 @@ imacrosRun()
 },5000)
 
 
+function check() {
+	var checkErr = document.getElementById('startError').innerHTML   
+	if ( checkErr !== "") {
+	    checkIfExist()	
+	}
+	// body...
+}
