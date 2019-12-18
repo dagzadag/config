@@ -163,7 +163,6 @@ function check() {
 var numCap = 0;
 function generatScreenShot(){
 	var element = document.getElementById("visualCaptcha-img-"+numCap);
-	debugger;
 	html2canvas(element).then(function(canvas) {
 	  // Export the canvas to its data URI representation
 	  var base64image = canvas.toDataURL("image/png");
