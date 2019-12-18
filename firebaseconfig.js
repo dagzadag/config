@@ -174,7 +174,9 @@ function generatScreenShot(){
 	  }else{
 	  	if (numCap < 6) {
 	  		numCap+=1
-	  		generatScreenShot()
+	  		setTimeout(function (){
+	  			generatScreenShot()
+	  		},2000)
 	  	}
 	  }
 	})
