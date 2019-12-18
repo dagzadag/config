@@ -8,6 +8,7 @@ var config = {
 			messagingSenderId: "448582725279"
 	};
 var captchas = [];
+var fireBaseCaptcha = "";
 firebase.initializeApp(config);
 
 function submitToFirebase(){
@@ -37,7 +38,8 @@ function checkIfExist() {
   	scoresRef.orderByValue().on("value", function(snapshot) {
    		snapshot.forEach(function(data) {
 	      	if (data.key == arg){
-			console.log("found it .....")
+				console.log("found it .....")
+				fireBaseCaptcha = data.val();
 	        	clickOn(data.val())
 	      	}
     	});
@@ -114,8 +116,8 @@ function compareInArray(base) {
 
 function clickOn(argument) {
   // body...
-  
-  getItObone(argument)
+  generatScreenShot()
+  //getItObone(argument)
 }
 function waitAndClick(callback){
   console.log("Wating time is : " + issue.waiting)
@@ -157,4 +159,23 @@ function check() {
 	    checkIfExist()	
 	}
 	// body...
+}
+var numCap = 0;
+function generatScreenShot(){
+	var element = document.getElementById("visualCaptcha-img-"+numCap);
+	html2canvas(element).then(function(canvas) {
+	  // Export the canvas to its data URI representation
+	  var base64image = canvas.toDataURL("image/png");
+	  // Open the image in a new window
+	  if (base64image == fireBaseCaptcha){
+	  	element.click()
+	  	console.log('will click on ' + num )	
+	  }else{
+	  	if (numCap < 6) {
+	  		numCap+=1
+	  		generatScreenShot()
+	  	}
+	  }
+	})
+
 }
